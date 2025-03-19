@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TaskTracker.ViewModels"
+             x:Class="TaskTracker.Views.TaskListPage"
+             Title="Task Tracker">
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Task Tracker" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Label Text="{Binding WeatherInfo}" FontSize="16" TextColor="Gray" />
+        <CollectionView ItemsSource="{Binding Tasks}" HeightRequest="400">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{Binding Name}" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskListViewModel}}, Path=EditTaskCommand}" CommandParameter="{Binding .}" />
+                        <Button Grid.Column="2" Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskListViewModel}}, Path=DeleteTaskCommand}" CommandParameter="{Binding .}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Add New Task" Command="{Binding AddTaskCommand}" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>

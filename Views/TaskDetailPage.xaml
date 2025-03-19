@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskTracker.Views.TaskDetailPage"
+             Title="Task Details">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Task Details" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+        <Entry Text="{Binding Task.Name, Mode=TwoWay}" Placeholder="Task Name" />
+        <HorizontalStackLayout>
+            <CheckBox IsChecked="{Binding Task.IsComplete, Mode=TwoWay}" VerticalOptions="Center" />
+            <Label Text="Complete?" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <Editor Text="{Binding Task.Notes, Mode=TwoWay}" Placeholder="Notes" HeightRequest="100" />
+        <Button Text="Save" Command="{Binding SaveTaskCommand}" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
